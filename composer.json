@@ -1,5 +1,5 @@
 {
-  "name": "pascalwacker/simple-symfony-inertia-bundle",
+  "name": "paw/simple-symfony-inertia-bundle",
   "description": "A Simple Symfony adapter for Inertia.js",
   "type": "symfony-bundle",
   "license": "MIT",
