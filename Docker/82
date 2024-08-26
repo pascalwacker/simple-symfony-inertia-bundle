@@ -1,0 +1,33 @@
+# Use PHP 8.2 FPM Alpine as the base image
+FROM php:8.2-fpm-alpine
+
+# Install necessary dependencies
+RUN apk add --no-cache \
+    zip \
+    unzip
+
+# Install PHP extensions if needed
+# For example, to install PDO and PDO MySQL:
+# RUN docker-php-ext-install pdo pdo_mysql
+
+# Install Composer
+COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
+
+# Set working directory
+WORKDIR /paw/simple-symfony-inertia-bundle
+
+# Copy existing application directory contents
+COPY . /paw/simple-symfony-inertia-bundle
+
+# Make sure files/folders needed by the processes are accessable when they run under the nobody user
+RUN chown -R root:root /paw/simple-symfony-inertia-bundle
+
+# Switch to use a non-root user from here on
+USER root
+
+# Run composer install
+RUN composer install --no-interaction --no-plugins --no-scripts
+
+# Expose port 9000 and start php-fpm server
+EXPOSE 9000
+CMD ["php-fpm"]

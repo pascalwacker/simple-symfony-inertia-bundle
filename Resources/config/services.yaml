@@ -1,0 +1,26 @@
+services:
+  paw_simple_inertia.inertia:
+    class: Paw\SimpleSymfonyInertiaBundle\Service\Inertia
+    public: false
+    arguments:
+      $engine: '@twig'
+      $requestStack: '@request_stack'
+      $serializer: '@serializer'
+
+  Paw\SimpleSymfonyInertiaBundle\Service\InertiaInterface: '@paw_simple_inertia.inertia'
+
+  paw_simple_inertia.twig_extension:
+    class: Paw\SimpleSymfonyInertiaBundle\Twig\InertiaExtension
+    public: false
+    arguments:
+      $inertia: '@paw_simple_inertia.inertia'
+    tags:
+      - { name: twig.extension }
+
+  Paw\SimpleSymfonyInertiaBundle\EventListener\InertiaListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.request }
+      - { name: kernel.event_listener, event: kernel.response }
+    arguments:
+      $inertia: '@paw_simple_inertia.inertia'
+      $debug: '%kernel.debug%'

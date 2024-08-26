@@ -1,0 +1,20 @@
+services:
+  php82:
+    container_name: php82
+    build:
+      context: .
+      dockerfile: Docker/82
+    volumes:
+      - .:/paw/simple-symfony-inertia-bundle:rw
+      - /paw/simple-symfony-inertia-bundle/vendor
+    working_dir: /paw/simple-symfony-inertia-bundle
+
+  php83:
+    container_name: php83
+    build:
+      context: .
+      dockerfile: Docker/83
+    volumes:
+      - .:/paw/simple-symfony-inertia-bundle:rw
+      - /paw/simple-symfony-inertia-bundle/vendor
+    working_dir: /paw/simple-symfony-inertia-bundle

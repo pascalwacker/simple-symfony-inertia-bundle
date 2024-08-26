@@ -1,0 +1,32 @@
+{
+  "name": "paw/simple-symfony-inertia-bundle",
+  "description": "A Simple Symfony adapter for Inertia.js",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pascal Sommerauer",
+      "email": "hello@pascalwacker.ch"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Paw\\SimpleSymfonyInertiaBundle\\": ""
+    }
+  },
+  "require": {
+    "php": ">=8.2",
+    "ext-json": "*",
+    "symfony/config": "^7.0",
+    "symfony/dependency-injection": "^7.0",
+    "symfony/http-kernel": "^7.0",
+    "twig/twig": "^3.0",
+    "symfony/http-client": "^7.0"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "symfony/property-access": "^7.0",
+    "symfony/serializer": "^7.0",
+    "symfony/var-dumper": "^7.0"
+  }
+}
