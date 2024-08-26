@@ -12,8 +12,6 @@ services:
   paw_simple_inertia.twig_extension:
     class: Paw\SimpleSymfonyInertiaBundle\Twig\InertiaExtension
     public: false
-    arguments:
-      $inertia: '@paw_simple_inertia.inertia'
     tags:
       - { name: twig.extension }
 
